@@ -24,7 +24,7 @@ const DetailsPage = () => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{ marginTop: "90px" }}>
       <Row className="justify-content-center">
         <Col xs="12">
           <h1 className="display-4">

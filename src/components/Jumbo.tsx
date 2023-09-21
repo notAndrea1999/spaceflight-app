@@ -2,7 +2,7 @@ import { Container } from "react-bootstrap";
 
 const Jumbotron = () => {
   return (
-    <Container className="bg-dark text-white">
+    <Container className="bg-dark text-white" style={{ marginTop: "100px" }}>
       <div>
         <h1 className="display-4">Welcome to Spaceflight</h1>
         <p>Best news Web-Site in 2023</p>
