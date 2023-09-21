@@ -19,7 +19,7 @@ const DetailsPage = () => {
   };
 
   useEffect(() => {
-    fetchSingleArticleId();
+    setTimeout(() => fetchSingleArticleId(), 1500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -28,7 +28,8 @@ const DetailsPage = () => {
       <Row className="justify-content-center">
         <Col xs="12">
           <h1 className="display-4">
-            Articolo fornito da: <br /> <span className="display-2">{singleArticle?.news_site}</span>
+            Articolo fornito da: <br />{" "}
+            {loader ? <Placeholder xs={6} /> : <span className="display-2">{singleArticle?.news_site}</span>}
           </h1>
         </Col>
         {loader ? (
@@ -50,7 +51,12 @@ const DetailsPage = () => {
           <>
             <Col xs="6">
               <Card>
-                <Card.Img variant="top" src={singleArticle?.image_url} height={"350px"} />
+                <Card.Img
+                  variant="top"
+                  src={singleArticle?.image_url}
+                  height={"350px"}
+                  style={{ objectFit: "cover" }}
+                />
                 <Card.Body>
                   <Card.Title>{singleArticle?.title}</Card.Title>
                   <Card.Text>{singleArticle?.summary} </Card.Text>
