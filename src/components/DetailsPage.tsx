@@ -27,10 +27,12 @@ const DetailsPage = () => {
     <Container style={{ marginTop: "90px" }}>
       <Row className="justify-content-center">
         <Col xs="12">
-          <h1 className="display-4">
-            Articolo fornito da: <br />{" "}
-            {loader ? <Placeholder xs={6} /> : <span className="display-2">{singleArticle?.news_site}</span>}
-          </h1>
+          {singleArticle && (
+            <h1 className="display-4">
+              Articolo fornito da: <br />{" "}
+              {loader ? <Placeholder xs={6} /> : <span className="display-2">{singleArticle.news_site}</span>}
+            </h1>
+          )}
         </Col>
         {loader ? (
           <Col xs="6">
@@ -49,23 +51,29 @@ const DetailsPage = () => {
           </Col>
         ) : (
           <>
-            <Col xs="6">
-              <Card>
-                <Card.Img
-                  variant="top"
-                  src={singleArticle?.image_url}
-                  height={"350px"}
-                  style={{ objectFit: "cover" }}
-                />
-                <Card.Body>
-                  <Card.Title>{singleArticle?.title}</Card.Title>
-                  <Card.Text>{singleArticle?.summary} </Card.Text>
-                  <Card.Text>
-                    <span className="fw-medium">Fonte:</span> <br /> {singleArticle?.news_site}{" "}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
+            {singleArticle && (
+              <Col xs="6">
+                <Card>
+                  <Card.Img
+                    variant="top"
+                    src={singleArticle.image_url}
+                    height={"350px"}
+                    style={{ objectFit: "cover" }}
+                  />
+                  <Card.Body>
+                    <Card.Title>{singleArticle.title}</Card.Title>
+                    <Card.Text>{singleArticle.summary} </Card.Text>
+                    <Card.Text>
+                      {singleArticle && (
+                        <>
+                          <span className="fw-medium">Fonte:</span> <br /> {singleArticle.news_site}
+                        </>
+                      )}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            )}
           </>
         )}
       </Row>
